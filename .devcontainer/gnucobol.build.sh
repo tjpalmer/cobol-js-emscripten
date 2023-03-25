@@ -4,10 +4,10 @@ cd /tools/cobol
 export CC=clang
 export CXX=clang++
 
-rm -rf gnucobol-3.0-rc1
-tar xvf gnucobol-3.0-rc1.tar.gz
+rm -rf gnucobol-3.1.2
+tar xvf gnucobol-3.1.2.tar.xz
 
-cd gnucobol-3.0-rc1
+cd gnucobol-3.1.2
 ./configure --with-db=false --disable-assembly
 make install
 ldconfig

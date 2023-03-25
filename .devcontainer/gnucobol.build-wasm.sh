@@ -4,17 +4,16 @@ cd /tools/cobol
 export CC=clang
 export CXX=clang++
 
-rm -rf gnucobol-3.0-rc1
-tar xvf gnucobol-3.0-rc1.tar.gz
+rm -rf gnucobol-3.1.2
+tar -xvf gnucobol-3.1.2.tar.xz
 
-cd gnucobol-3.0-rc1
-sed -i '14680,14868d' configure # Delete GMP checks
-sed -i '515,582d' configure.ac # Delete GMP checks
+cd gnucobol-3.1.2
 
 autoreconf -f -i
 
-emconfigure ./configure --with-db=false --disable-assembly --prefix=${HOME}/opt --includedir=${HOME}/opt/include
-make defaults.h
+GMP_CFLAGS="-I/root/opt/include -L/root/opt/lib" \
+    emconfigure ./configure --with-db=false --disable-assembly \
+    --prefix=${HOME}/opt --includedir=${HOME}/opt/include
 cd libcob
-emmake make INCLUDES=-I/root/opt/include
+emmake make INCLUDES=-I/root/opt/include CFLAGS=-L/root/opt/lib
 make install

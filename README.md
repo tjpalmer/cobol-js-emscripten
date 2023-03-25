@@ -17,5 +17,13 @@ The whole development environment is contained in the `.devContainer` directory.
 
 Use Docker and the [containers remote extension](https://code.visualstudio.com/docs/remote/containers) for VSCode to reliably reproduce this environment
 
+Or manually use the commands below:
+
+```
+# Or use docker instead of podman
+podman build -f .devcontainer/Dockerfile -t cobol-js-emscripten
+podman run -it --rm -v $PWD:/src cobol-js-emscripten bash
+```
+
 ## Live Demo
 [moxon6.github.io/cobol-js-emscripten](https://moxon6.github.io/cobol-js-emscripten)

@@ -1,5 +1,5 @@
-
-FROM trzeci/emscripten-upstream
+# FROM docker.io/trzeci/emscripten-upstream
+FROM docker.io/emscripten/emsdk
 
 ENV LANG en_US.UTF-8 
 
@@ -10,6 +10,7 @@ RUN apt-get update \
 
 COPY ./*.sh /scripts/
 
+RUN chmod +x /scripts/*.sh
 RUN sed -i 's/\r$//' /scripts/*.sh
 
 RUN "bash" "/scripts/build.sh"
@@ -17,6 +18,5 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8
 
-
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" 
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" 
 RUN sed -i "s/OSH_THEME=.*/OSH_THEME=\"sirup\"/g" ~/.bashrc
