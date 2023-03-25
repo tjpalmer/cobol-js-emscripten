@@ -38,7 +38,7 @@ emcc \
 tput sgr 0  # Reset font color
 
 echo ">>> Commenting out all dlopen JS callbacks"
-sed -i '/To use dlopen/s/^/\/\//' $build_js
+sed -i '/dlopenMissingError/s/^/\/\//' $build_js
 
 echo ">>> Commenting out all stub JS callbacks"
 sed -i '/Calling stub instead/s/^/\/\//' $build_js

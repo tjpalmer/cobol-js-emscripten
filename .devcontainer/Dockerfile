@@ -1,4 +1,3 @@
-# FROM docker.io/trzeci/emscripten-upstream
 FROM docker.io/emscripten/emsdk
 
 ENV LANG en_US.UTF-8 

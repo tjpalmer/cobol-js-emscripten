@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "watch": "find c cob scripts -type f | entr ./scripts/build.sh",
-    "start": "cd app && python2 -m SimpleHTTPServer 5500",
+    "start": "cd app && python3 -m http.server 5500",
     "clean": "rm -rf tmp",
     "deploy": "gh-pages -d app"
   },
